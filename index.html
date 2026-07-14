@@ -6,7 +6,7 @@
 <title>Nithyashree — Puberty Ceremony Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Noto+Serif+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -22,6 +22,7 @@
   --display:'Marcellus',serif;
   --serif:'Cormorant Garamond',serif;
   --sans:'Jost',sans-serif;
+  --tamil:'Noto Serif Tamil',serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
@@ -178,6 +179,74 @@ section{padding:90px 22px;max-width:900px;margin:0 auto;text-align:center;positi
 }
 .eyebrow::before,.eyebrow::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
 .eyebrow::after{background:linear-gradient(90deg,var(--gold),transparent)}
+
+/* ---- MANGO LEAF THORANAM (Tamil festoon) ---- */
+.thoranam{
+  position:sticky;top:0;left:0;width:100%;height:56px;z-index:50;pointer-events:none;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.45));
+  animation:thorSway 6s ease-in-out infinite;
+  transform-origin:top center;
+}
+@keyframes thorSway{0%,100%{transform:rotate(.35deg)}50%{transform:rotate(-.35deg)}}
+.thoranam svg{width:100%;height:100%}
+
+/* ---- TAMIL TYPOGRAPHY ---- */
+.tamil{font-family:var(--tamil)}
+.ceremony-ta{
+  margin-top:24px;font-family:var(--tamil);font-weight:600;
+  font-size:clamp(26px,5.6vw,44px);line-height:1.5;
+  background:linear-gradient(100deg,#b9832a 0%,var(--gold-bright) 25%,#fff3d0 50%,var(--gold-bright) 75%,#b9832a 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shine 5.5s linear infinite;
+  filter:drop-shadow(0 3px 18px rgba(232,182,76,.3));
+}
+.name-ta{
+  margin-top:2px;font-family:var(--tamil);font-weight:500;
+  font-size:clamp(20px,4vw,30px);color:rgba(255,217,138,.9);letter-spacing:.06em;
+}
+.bless-ta{
+  font-family:var(--tamil);font-weight:500;font-size:clamp(18px,3.4vw,25px);
+  line-height:2;color:var(--gold-bright);max-width:620px;margin:30px auto 0;
+  text-shadow:0 2px 24px rgba(232,182,76,.25);
+}
+.tag-ta{margin-top:12px;font-family:var(--tamil);font-size:clamp(15px,2.6vw,19px);color:rgba(255,246,234,.75)}
+
+/* ---- KUTHUVILAKKU (traditional lamp) ---- */
+.vilakku{width:76px;height:120px;margin:6px auto 0;position:relative;display:block}
+.vilakku .flame{
+  transform-origin:50% 100%;
+  animation:flick 1.15s ease-in-out infinite alternate;
+}
+.vilakku .flame2{animation-duration:.85s;animation-delay:-.4s}
+@keyframes flick{
+  0%{transform:scale(1) skewX(0deg)}
+  35%{transform:scale(1.08,1.16) skewX(2.5deg)}
+  70%{transform:scale(.94,.96) skewX(-2deg)}
+  100%{transform:scale(1.05,1.1) skewX(1.5deg)}
+}
+.vilakku .halo{
+  position:absolute;left:50%;top:6px;transform:translateX(-50%);
+  width:70px;height:70px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,190,80,.4),transparent 70%);
+  animation:haloPulse 2s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes haloPulse{0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.25)}}
+
+/* ---- TEMPLE ZARI DIVIDER ---- */
+.temple-border{
+  width:min(86%,460px);height:14px;margin:56px auto 0;position:relative;opacity:.85;
+  background:
+    linear-gradient(45deg, transparent 46%, var(--gold) 46% 54%, transparent 54%) 0 0/16px 7px repeat-x,
+    linear-gradient(-45deg, transparent 46%, var(--gold) 46% 54%, transparent 54%) 0 0/16px 7px repeat-x,
+    linear-gradient(90deg, transparent, rgba(232,182,76,.6) 20% 80%, transparent) 0 11px/100% 1.5px no-repeat;
+}
+.temple-border::before,.temple-border::after{
+  content:"◆";position:absolute;top:-6px;color:var(--gold);font-size:11px;
+}
+.temple-border::before{left:-20px}
+.temple-border::after{right:-20px}
 
 /* ---- HERO ---- */
 #hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding-top:70px}
@@ -424,16 +493,6 @@ footer .tag{margin-top:30px;font-family:var(--script);font-size:26px;color:var(-
 }
 .esc-sub{font-family:var(--serif);font-style:italic;font-size:15.5px;color:rgba(255,246,234,.65);transform:translateZ(22px)}
 
-/* stat strip */
-.esc-stats{
-  display:flex;gap:0;margin-top:16px;transform:translateZ(24px);
-  border-top:1px solid rgba(232,182,76,.2);border-bottom:1px solid rgba(232,182,76,.2);
-}
-.esc-stats div{padding:12px 18px;text-align:center}
-.esc-stats div+div{border-left:1px solid rgba(232,182,76,.2)}
-.esc-stats b{display:block;font-family:var(--display);font-size:20px;color:var(--gold-bright)}
-.esc-stats span{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,246,234,.55)}
-
 /* magnetic contact buttons */
 .esc-links{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;justify-content:center;transform:translateZ(34px)}
 .esc-links a{
@@ -498,8 +557,6 @@ footer .tag{margin-top:30px;font-family:var(--script);font-size:26px;color:var(-
   .date-plate .big{border:none;border-top:1px solid rgba(232,182,76,.35);border-bottom:1px solid rgba(232,182,76,.35)}
   section{padding:70px 18px}
   .esc-badge{padding:30px 18px;width:100%}
-  .esc-stats{flex-wrap:wrap;justify-content:center}
-  .esc-stats div{padding:10px 12px;flex:1;min-width:84px}
   .esc-links{gap:10px}
   .esc-links a{padding:12px 16px;font-size:11px}
   .escritor{padding:54px 16px 70px}
@@ -508,9 +565,6 @@ footer .tag{margin-top:30px;font-family:var(--script);font-size:26px;color:var(-
   .orb{filter:blur(70px)}
 }
 @media (max-width:380px){
-  .esc-stats div{padding:9px 8px;min-width:0}
-  .esc-stats b{font-size:17px}
-  .esc-stats span{font-size:8px;letter-spacing:.18em}
   .esc-sign .sig{font-size:40px}
   .cards{grid-template-columns:1fr}
 }
@@ -608,12 +662,37 @@ footer .tag{margin-top:30px;font-family:var(--script);font-size:26px;color:var(-
 <!-- ============ MAIN ============ -->
 <main id="main">
 
+  <!-- mango-leaf thoranam -->
+  <div class="thoranam" aria-hidden="true">
+    <svg viewBox="0 0 1200 56" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="leafG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1fae76"/><stop offset="1" stop-color="#0b6b47"/>
+        </linearGradient>
+        <linearGradient id="leafG2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#26c286"/><stop offset="1" stop-color="#0f8a5f"/>
+        </linearGradient>
+        <pattern id="thor" width="46" height="56" patternUnits="userSpaceOnUse">
+          <path d="M10 4 Q16 22 10 44 Q4 22 10 4Z" fill="url(#leafG)" transform="rotate(6 10 4)"/>
+          <path d="M10 4 Q10 24 10 42" stroke="#0a5a3c" stroke-width="1" fill="none" transform="rotate(6 10 4)"/>
+          <path d="M33 4 Q40 20 33 40 Q26 20 33 4Z" fill="url(#leafG2)" transform="rotate(-7 33 4)"/>
+          <path d="M33 4 Q33 22 33 38" stroke="#0a5a3c" stroke-width="1" fill="none" transform="rotate(-7 33 4)"/>
+          <circle cx="22" cy="7" r="3.4" fill="#ff9a2e"/>
+          <circle cx="45.5" cy="7" r="3.4" fill="#ff9a2e"/>
+        </pattern>
+      </defs>
+      <rect width="1200" height="56" fill="url(#thor)"/>
+      <line x1="0" y1="3" x2="1200" y2="3" stroke="#c98b2c" stroke-width="3"/>
+    </svg>
+  </div>
+
   <section id="hero">
     <div class="hero-inner" id="hero-inner">
-      <p class="mantra">|| Shri Ganeshay Namah ||</p>
+      <p class="mantra">|| Shri Ganeshay Namah · ஸ்ரீ கணேச நமஹ ||</p>
       <p class="family">The Saythakumar Family
         <small>request the honour of your company at the</small>
       </p>
+      <p class="ceremony-ta">மஞ்சள் நீராட்டு விழா</p>
       <h1 class="ceremony">Puberty Ceremony</h1>
       <p class="of-daughter">of their daughter</p>
 
@@ -633,6 +712,7 @@ footer .tag{margin-top:30px;font-family:var(--script);font-size:26px;color:var(-
         </svg>
         <div class="girl-name" id="girl-name">Nithyashree</div>
       </div>
+      <p class="name-ta">செல்வி நித்யஸ்ரீ</p>
 
       <p class="parents">Daughter of Mr. Krishna Chiru Srinivasa &amp; Mrs. Pramita Srinivasa</p>
 
@@ -658,7 +738,8 @@ footer .tag{margin-top:30px;font-family:var(--script);font-size:26px;color:var(-
   </section>
 
   <section id="details">
-    <p class="eyebrow reveal">The Celebration</p>
+    <div class="temple-border reveal" style="margin:0 auto 50px" aria-hidden="true"></div>
+    <p class="eyebrow reveal">The Celebration · விழா விவரம்</p>
     <div class="cards">
       <div class="card reveal"><span class="glow"></span><span class="ic">🗓️</span><h3>When</h3>
         <p>Sunday, 29 May 2025<br>from 3:00 PM onwards</p></div>
@@ -675,6 +756,36 @@ footer .tag{margin-top:30px;font-family:var(--script);font-size:26px;color:var(-
 
   <section id="blessing">
     <div class="divider reveal"></div>
+
+    <!-- kuthuvilakku — traditional Tamil lamp -->
+    <div class="vilakku reveal" role="img" aria-label="Traditional kuthuvilakku lamp">
+      <span class="halo"></span>
+      <svg viewBox="0 0 76 120" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="brass" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#8a5f16"/><stop offset=".5" stop-color="#ffd98a"/><stop offset="1" stop-color="#8a5f16"/>
+          </linearGradient>
+          <radialGradient id="fl" cx=".5" cy=".85" r=".9">
+            <stop offset="0" stop-color="#fff3d0"/><stop offset=".45" stop-color="#ffb028"/><stop offset="1" stop-color="#e2571b"/>
+          </radialGradient>
+        </defs>
+        <!-- flames -->
+        <g class="flame"><path d="M38 8 Q45 22 38 32 Q31 22 38 8Z" fill="url(#fl)"/></g>
+        <g class="flame flame2" opacity=".85"><path d="M38 14 Q42 23 38 30 Q34 23 38 14Z" fill="#fff3d0"/></g>
+        <!-- lamp top bowl -->
+        <path d="M22 34 Q38 30 54 34 L50 42 Q38 46 26 42 Z" fill="url(#brass)"/>
+        <ellipse cx="38" cy="34" rx="16" ry="3.4" fill="#ffe9b8"/>
+        <!-- stem -->
+        <rect x="34.6" y="44" width="6.8" height="30" rx="3" fill="url(#brass)"/>
+        <ellipse cx="38" cy="58" rx="8" ry="3" fill="url(#brass)"/>
+        <!-- base tiers -->
+        <path d="M20 80 Q38 74 56 80 L52 88 Q38 92 24 88 Z" fill="url(#brass)"/>
+        <path d="M14 98 Q38 90 62 98 L58 108 Q38 113 18 108 Z" fill="url(#brass)"/>
+        <ellipse cx="38" cy="109" rx="23" ry="4" fill="#6e4a10"/>
+      </svg>
+    </div>
+
+    <p class="bless-ta reveal">மங்கையாய் மலர்ந்த எங்கள் செல்வத்திற்கு<br>வாழ்த்துக்களும் ஆசிகளும் வழங்க வாருங்கள்</p>
     <p class="bless reveal">“Like a lamp newly lit in the family shrine, may her life glow with wisdom, grace and joy.
     Join us as we shower our little girl with blessings on her special day.”</p>
     <div class="divider reveal" style="margin-top:34px"></div>
@@ -686,6 +797,7 @@ footer .tag{margin-top:30px;font-family:var(--script);font-size:26px;color:var(-
   <p class="inv reveal">Invited by</p>
   <p class="who reveal">Mr. Krishna Chiru Srinivasa &amp; Mrs. Pramita Srinivasa</p>
   <p class="tag reveal">We await your gracious presence</p>
+  <p class="tag-ta reveal">அன்புடன் அழைக்கிறோம் · வருக வருக</p>
 </footer>
 
 <!-- ============ ESCRITOR CREATIONS — STUDIO SEAL ============ -->
@@ -715,13 +827,7 @@ footer .tag{margin-top:30px;font-family:var(--script);font-size:26px;color:var(-
     </div>
     <span class="esc-word">Creations</span>
 
-    <span class="esc-sub">Websites · Invitations · Films · Stories</span>
-
-    <div class="esc-stats">
-      <div><b data-count="250">0</b><span>Poems</span></div>
-      <div><b data-count="40">0</b><span>Anthologies</span></div>
-      <div><b data-count="2">0</b><span>Books</span></div>
-    </div>
+    <span class="esc-sub">Bespoke digital invitations for weddings,<br>ceremonies &amp; every celebration worth remembering.</span>
 
     <div class="esc-links" id="esc-links">
       <a class="wa magnetic" id="lnk-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
@@ -962,20 +1068,11 @@ if(!reduced && matchMedia('(pointer:fine)').matches){
   badge.addEventListener('mouseleave', ()=>{ badge.style.transform=''; });
 }
 
-/* signature writes itself + stats count up when it scrolls into view */
-function countUp(el){
-  const target = +el.dataset.count, dur = 1600, t0 = performance.now();
-  (function step(t){
-    const p = Math.min((t-t0)/dur, 1);
-    el.textContent = Math.round(target * (1-Math.pow(1-p,3))) + (p===1 ? '+' : '');
-    if(p<1) requestAnimationFrame(step);
-  })(t0);
-}
+/* signature writes itself when it scrolls into view */
 const escIO = new IntersectionObserver(es=>{
   es.forEach(e=>{
     if(!e.isIntersecting) return;
     sign.classList.add('write');
-    badge.querySelectorAll('[data-count]').forEach(countUp);
     if(!reduced) sparkleBadge();
     escIO.disconnect();
   });
